@@ -28,6 +28,7 @@ int main(int, char**)
 			break;
 		}
 
+		// with clear({0,0,0,1}) it turns blue, right now its acting like a r g b rather than r g b a
 		canvas.Clear({ 0, 0, 0, 0 });
 		for (int i = 0; i < 1000; i++) canvas.DrawPoint({ random(0, width), random(0,height)}, {random(0, 1), random(0, 1), random(0, 1), 1});
 		canvas.Update();
