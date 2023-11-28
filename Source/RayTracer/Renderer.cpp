@@ -1,4 +1,5 @@
 #include "Renderer.h"
+#include "Canvas.h"
 #include <iostream>
 
 bool Renderer::Initialize()
@@ -13,8 +14,8 @@ bool Renderer::Initialize()
 
 void Renderer::Shutdown()
 {
-	if (m_window != nullptr) delete(m_window);
-	if (m_renderer != nullptr) delete(m_renderer);
+	if (m_window != nullptr) SDL_DestroyWindow(m_window);
+	if (m_renderer != nullptr) SDL_DestroyRenderer(m_renderer);
 
 	SDL_Quit();
 }
@@ -37,4 +38,11 @@ bool Renderer::CreateWindow(const std::string& title, int width, int height)
 	}
 
 	return true;
+}
+
+void Renderer::PresentCanvas(const Canvas& canvas)
+{
+	SDL_RenderCopy(m_renderer, canvas.m_texture, NULL, NULL);
+
+	SDL_RenderPresent(m_renderer);
 }

@@ -1,13 +1,20 @@
 #include <iostream>
 #include "Renderer.h"
+#include "Random.h"
+#include "Canvas.h"
 
 int main(int, char**)
 {
+	static int width = 400;
+	static int height = 300;
+
 	std::cout << "Hello world\n";
+	seedRandom((unsigned int)time(nullptr));
 
 	Renderer renderer;
 	renderer.Initialize();
-	renderer.CreateWindow("Ray Tracer", 400, 300);
+	renderer.CreateWindow("Ray Tracer", width, height);
+	Canvas canvas(width, height, renderer);
 
 	bool quit = false;
 	while (!quit)
@@ -20,6 +27,12 @@ int main(int, char**)
 			quit = true;
 			break;
 		}
+
+		canvas.Clear({ 0, 0, 0, 0 });
+		for (int i = 0; i < 1000; i++) canvas.DrawPoint({ random(0, width), random(0,height)}, {random(0, 1), random(0, 1), random(0, 1), 1});
+		canvas.Update();
+
+		renderer.PresentCanvas(canvas);
 	}
 
 	renderer.Shutdown();
