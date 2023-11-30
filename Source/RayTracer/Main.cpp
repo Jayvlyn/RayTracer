@@ -10,7 +10,7 @@ int main(int, char**)
 	static int width = 400;
 	static int height = 300;
 
-	std::cout << "Hello world\n";
+	//std::cout << "Hello world\n";
 	seedRandom((unsigned int)time(nullptr));
 
 	Renderer renderer;

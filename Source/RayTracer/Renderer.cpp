@@ -22,7 +22,7 @@ void Renderer::Shutdown()
 
 bool Renderer::CreateWindow(const std::string& title, int width, int height)
 {
-	m_window = SDL_CreateWindow(title.c_str(), 100, 100, width, height, SDL_WINDOW_SHOWN);
+	m_window = SDL_CreateWindow(title.c_str(), SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, width, height, SDL_WINDOW_SHOWN);
 	if (!m_window)
 	{
 		std::cerr << "SDL Error: " << SDL_GetError() << std::endl;
