@@ -26,3 +26,8 @@ inline float angle(const glm::vec3& v1, const glm::vec3& v2)
 {
 	return glm::acos(dot(v1, v2));
 }
+
+inline glm::vec3 reflect(const glm::vec3& v, const glm::vec3& n)
+{
+	return v - 2.0f * dot(n, v) * n;
+}
