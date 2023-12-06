@@ -2,6 +2,8 @@
 #include "Canvas.h"
 #include "MathUtils.h"
 #include "Random.h"
+#include <iostream>
+#include <iomanip>
 
 void Scene::Render(Canvas& canvas, int numSamples)
 {
@@ -34,11 +36,13 @@ void Scene::Render(Canvas& canvas, int numSamples)
 				color += Trace(ray, 0, 100, raycastHit, m_depth);
 			}
 
+
 			// draw color to canvas point (pixel)
 			// get average color (average = (color + color + color) / number of samples)
 			color /= numSamples;
 			canvas.DrawPoint(pixel, color4_t(color, 1));
 		}
+		std::cout << std::setprecision(2) << std::setw(5) << ((y / canvas.GetSize().y) * 100) << "%\n";
 	}
 } 
 
@@ -73,8 +77,8 @@ color3_t Scene::Trace(const ray_t& ray, float minDistance, float maxDistance, ra
 		}
 		else
 		{
-			// reached maximum depth of bounces (color is black)
-			return color3_t{ 0, 0, 0 };
+			// reached maximum depth of bounces (get emissive color, will be black except for Emissive materials)
+			return raycastHit.material->GetEmissive();
 		}
 	}
 

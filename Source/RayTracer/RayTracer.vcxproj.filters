@@ -36,6 +36,12 @@
     <ClCompile Include="Material.cpp">
       <Filter>Resource Files\Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Plane.cpp">
+      <Filter>Resource Files\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Triangle.cpp">
+      <Filter>Resource Files\Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Renderer.h">
@@ -69,6 +75,12 @@
       <Filter>Resource Files\Source Files</Filter>
     </ClInclude>
     <ClInclude Include="Sphere.h">
+      <Filter>Resource Files\Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Plane.h">
+      <Filter>Resource Files\Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Triangle.h">
       <Filter>Resource Files\Source Files</Filter>
     </ClInclude>
   </ItemGroup>
