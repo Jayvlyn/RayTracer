@@ -52,6 +52,8 @@ void Scene::Render(Canvas& canvas, int numSamples, int depth)
 
 color3_t Scene::Trace(const ray_t& ray, float minDistance, float maxDistance, raycastHit_t& raycastHit, int depth)
 {
+	if (depth <= 0) return color3_t{ 0,0,0 };
+
 	bool rayHit = false;
 	float closestDistance = maxDistance;
 
